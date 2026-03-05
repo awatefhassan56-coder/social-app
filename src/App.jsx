@@ -3,7 +3,7 @@ import './App.css'
 import Signin from './Components/Signin/Signin';
 import Signup from './Components/Signup/Signup';
 import Layout from './Components/Layout/Layout';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import Profile from './Components/Profile/Profile';
 import Settings from './Components/Settings/Settings';
@@ -19,8 +19,7 @@ import GuestRoute from './Components/GuestRoute/GuestRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ToastContainer } from 'react-toastify';
 
-
-const router = createBrowserRouter([
+const router = createHashRouter([
 
   {
     path: '', element: <Layout />, children: [
@@ -50,9 +49,7 @@ const router = createBrowserRouter([
   { path: 'login', element: <GuestRoute><Signin /> </GuestRoute> },
   { path: 'signup', element: <GuestRoute><Signup /></GuestRoute> },
 
-], {
-  basename: "/social-app/"
-})
+])
 
 const queryClientConfig = new QueryClient();
 
@@ -60,7 +57,6 @@ function App() {
 
   return (
     <>
-
       <QueryClientProvider client={queryClientConfig}>
 
         <AuthContextProvider >
@@ -72,7 +68,6 @@ function App() {
       </QueryClientProvider>
 
       <ToastContainer />
-
     </>
   )
 }
