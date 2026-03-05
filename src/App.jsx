@@ -50,8 +50,9 @@ const router = createBrowserRouter([
   { path: 'login', element: <GuestRoute><Signin /> </GuestRoute> },
   { path: 'signup', element: <GuestRoute><Signup /></GuestRoute> },
 
-
-])
+], {
+  basename: "/social-app/"
+})
 
 const queryClientConfig = new QueryClient();
 
@@ -69,10 +70,11 @@ function App() {
         </AuthContextProvider>
 
       </QueryClientProvider>
+
       <ToastContainer />
+
     </>
   )
 }
 
 export default App
-
